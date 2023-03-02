@@ -1,0 +1,28 @@
+/**
+ * @param {character[]} chars
+ * @return {number}
+ */
+var compress = function(chars) {
+    if(chars.length == 1) return 1;
+    let count = 1;
+    let j= 0;
+
+    for(let i=1; i<=chars.length; i++){
+        if(i<chars.length && chars[i] == chars[i-1]) count++;
+        else {
+            chars[j++] = chars[i-1];
+            if(count > 1) {
+                let str = count + '';
+                for(let k=0; k<str.length;k++){
+                    chars[j++] = str[k];
+                }
+            }
+            count = 1
+        }
+    }
+
+    
+    return j; 
+
+
+}
